@@ -73,6 +73,7 @@ export default function NotesProvider(props) {
 
   useEffect(() => {
     notesDispatch({type: "setup", data: persistentData});
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -81,6 +82,7 @@ export default function NotesProvider(props) {
 
   useEffect(() => {
     setPersistentData (notesData);
+  // eslint-disable-next-line react-hooks/exhaustive-deps  
   }, [notesData]);
 
   return (

@@ -18,8 +18,13 @@ const notesReducer = (previousState, instructions) => {
   switch (instructions.type) {
     case "setup":
       console.log("Apply persistent data to state now");
-      stateEditable = instructions.data
-      return stateEditable
+
+      // instructions.data is provided when the dispatch function is called
+      let localStorageData = instructions.data;
+      stateEditable = localStorageData;
+
+      // whatever is returned is noew the newest version of state
+      return stateEditable;
 
     case "create":
       console.log("ToDo: Create note and add to state");
@@ -30,7 +35,7 @@ const notesReducer = (previousState, instructions) => {
       return stateEditable;
 
     case "update":
-      console.log("ToDo: Update specific note and add overwrite in state");  
+      console.log("ToDo: Update specific note and add overwrite in state");
       break;
     case "delete":
       console.log("ToDo: Delete note from state");
@@ -67,22 +72,25 @@ export default function NotesProvider(props) {
   const [notesData, notesDispatch] = useReducer(notesReducer, initialNotesData);
 
   const [persistentData, setPersistentData] = useLocalStorage(
-    'notes',
+    "notes",
     initialNotesData
   );
 
   useEffect(() => {
-    notesDispatch({type: "setup", data: persistentData});
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // On app start, overwrite notesData with persistentData
+    notesDispatch({ type: "setup", data: persistentData });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Dev: confirm that our local storage is updating
   useEffect(() => {
     console.log("Local Storage: " + persistentData);
   }, [persistentData]);
 
+  // Autosave any changes to notes from reducer state into local storage
   useEffect(() => {
-    setPersistentData (notesData);
-  // eslint-disable-next-line react-hooks/exhaustive-deps  
+    setPersistentData(notesData);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [notesData]);
 
   return (

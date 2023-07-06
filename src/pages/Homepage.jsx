@@ -1,3 +1,4 @@
+import NoteDisplay from "../components/NoteDisplay";
 import { useNoteData } from "../contexts/NotesContext";
 
 export default function Homepage(props) {
@@ -13,6 +14,14 @@ export default function Homepage(props) {
       {/* Note Form Component */}
 
       {/* List Of All Notes Component */}
+      <h2>List of all notes:</h2>
+      {globalNotesData.map((note) => {
+        return (
+          <div key={note.id}>
+            <NoteDisplay id={note.id} />
+          </div>
+        );
+      })}
     </div>
   );
 }

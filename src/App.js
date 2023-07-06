@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 
+// start rendering stuff from this file
 function App() {
   return (
     <div className="App">

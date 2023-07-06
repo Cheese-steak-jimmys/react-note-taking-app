@@ -71,6 +71,7 @@ export function useNoteDispatch() {
 export default function NotesProvider(props) {
   const [notesData, notesDispatch] = useReducer(notesReducer, initialNotesData);
 
+  //key is 'notes' in the application / local storage in devtools
   const [persistentData, setPersistentData] = useLocalStorage(
     "notes",
     initialNotesData

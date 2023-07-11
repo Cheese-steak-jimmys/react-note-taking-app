@@ -17,9 +17,8 @@ export default function NoteDisplay(props) {
       })
     );
 
-
-      // Alternative syntax:
-      // setLocalNote(globalNotesData.find(globalSpecificNote => globalSpecificNote.id === id));
+    // Alternative syntax:
+    // setLocalNote(globalNotesData.find(globalSpecificNote => globalSpecificNote.id === id));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [globalNotesData, id]);
@@ -42,7 +41,9 @@ export default function NoteDisplay(props) {
       <input
         type="checkbox"
         disabled="disabled" // <--- user cannot click the checkbox
+        onChange={null}
         readOnly={true}
+        checked={Boolean(localNote.isCompleted)}
         value={localNote.isComplete}
       />
       <h5>Due Date: {new Date(localNote.dueDate).toLocaleDateString()}</h5>

@@ -23,7 +23,7 @@ const notesReducer = (previousState, instructions) => {
       let localStorageData = instructions.data;
       stateEditable = localStorageData;
 
-      // whatever is returned is noew the newest version of state
+      // whatever is returned is now the newest version of state
       return stateEditable;
 
     case "create":

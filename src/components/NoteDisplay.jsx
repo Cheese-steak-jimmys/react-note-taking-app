@@ -16,6 +16,11 @@ export default function NoteDisplay(props) {
         return globalSpecificNote.id === id;
       })
     );
+
+
+      // Alternative syntax:
+      // setLocalNote(globalNotesData.find(globalSpecificNote => globalSpecificNote.id === id));
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [globalNotesData, id]);
 

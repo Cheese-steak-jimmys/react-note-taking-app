@@ -1,4 +1,3 @@
-import NoteDisplay from "../components/NoteDisplay";
 import NoteForm from "../components/NoteForm";
 import NoteParent from "../components/NoteParent";
 import { useNoteData } from "../contexts/NotesContext";

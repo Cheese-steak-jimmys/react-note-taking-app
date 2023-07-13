@@ -35,7 +35,8 @@ export default function NoteDisplay(props) {
                 */}
       <h4>{localNote.title}</h4>
       <p>{localNote.description}</p>
-      <p>{localNote.isComplete ? "COMPLETED" : "NOT YET DONE"}</p>
+      {/* <h5>status:</h5> */}
+      <h5>status:<p>{localNote.isComplete ? "COMPLETED" : "NOT YET DONE"}</p></h5>
 
       {/* makes a read-only checkbox */}
       <input

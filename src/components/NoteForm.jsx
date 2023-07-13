@@ -9,6 +9,7 @@
 
 import { useEffect, useState } from "react";
 import { useNoteData, useNoteDispatch } from "../contexts/NotesContext";
+import Button from "react-bootstrap/Button";
 
 export default function NoteForm(props) {
   // If this is null/no prop provided, we are creating a note
@@ -62,8 +63,8 @@ export default function NoteForm(props) {
   };
 
   return (
-    <div>
-      <form>
+    <div id="form-box">
+      <form id="note-box">
         <label>Title:</label>
         <input
           type="text"
@@ -109,9 +110,9 @@ export default function NoteForm(props) {
           onChange={setLocalCreatedAtDate}
         /> */}
       </form>
-      <button variant="primary" onClick={saveNoteToGlobal}>
+      <Button variant="primary" onClick={saveNoteToGlobal}>
         Save Note
-      </button>
+      </Button>
     </div>
   );
 }

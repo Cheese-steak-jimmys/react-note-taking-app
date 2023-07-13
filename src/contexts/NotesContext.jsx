@@ -17,17 +17,17 @@ const notesReducer = (previousState, instructions) => {
 
   switch (instructions.type) {
     case "setup":
-      console.log("Apply persistent data to state now");
+      console.log("Apply persistent data to state now.");
 
       // instructions.data is provided when the dispatch function is called
       let localStorageData = instructions.data;
       stateEditable = localStorageData;
 
-      // whatever is returned is now the newest version of state
+      // Whatever is returned is now the newest version of state
       return stateEditable;
 
     case "create":
-      console.log("ToDo: Create note and add to state");
+      console.log("Create note and add to state");
 
       let newNote = instructions.newNote;
       stateEditable.push(newNote);
@@ -35,8 +35,20 @@ const notesReducer = (previousState, instructions) => {
       return stateEditable;
 
     case "update":
-      console.log("ToDo: Update specific note and add overwrite in state");
-      break;
+      console.log("Update specific note and overwrite it in state");
+
+      // 1. Find the existing note
+      let targetNoteIndex = stateEditable.findIndex((globalSpecificNote) => {
+        //console.log("Some note data");
+
+        return globalSpecificNote.id === instructions.updatedNote.id;
+      });
+
+      // 2. Overwrite existing note
+      stateEditable[targetNoteIndex] = instructions.updatedNote;
+
+      // 3. Return updated state array of notes
+      return stateEditable;
     case "delete":
       console.log("ToDo: Delete note from state");
       break;

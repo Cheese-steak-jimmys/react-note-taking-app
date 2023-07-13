@@ -10,7 +10,7 @@ export default function NoteParent(props) {
   };
 
   return (
-    <div>
+    <div id="editButton">
       {editMode ? <NoteForm id={props.id} /> : <NoteDisplay id={props.id} />}
       <button onClick={toggleEditMode}>Toggle Edit Mode</button>
     </div>

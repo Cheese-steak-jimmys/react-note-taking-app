@@ -85,7 +85,8 @@ export default function NoteForm(props) {
           type="checkbox"
           name="isCompleted"
           value={localIsCompleted}
-          onChange={(event) => setLocalIsCompleted(event.target.value)}
+          checked={localIsCompleted}
+          onChange={(event) => setLocalIsCompleted(!localIsCompleted)}
         />
 
         <label>Due Date:</label>
@@ -108,9 +109,11 @@ export default function NoteForm(props) {
           onChange={setLocalCreatedAtDate}
         /> */}
       </form>
-      <button>Save Note</button>
+      <button variant="primary" onClick={saveNoteToGlobal}>
+        Save Note
+      </button>
     </div>
   );
 }
 
-// timestamp 1:19
+// timestamp
